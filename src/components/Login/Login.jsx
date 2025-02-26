@@ -9,7 +9,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNagit branch -M mainvigate();
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -18,11 +18,11 @@ const Login = () => {
       );
 
       const users = Object.values(data);
-      const odamcha = users.find(
+      const userExists = users.find(
         (user) => user.username === username && user.password === password
       );
 
-      if (odamcha) {
+      if (userExists) {
         dispatch(login());
         navigate("/private");
       } else {
