@@ -26,10 +26,10 @@ const Login = () => {
         dispatch(login());
         navigate("/private");
       } else {
-        console.log("hato");
+        alert("hato");
       }
     } catch {
-      console.log("hato");
+      alert("hato");
     }
   };
 
