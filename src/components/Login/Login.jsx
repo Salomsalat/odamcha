@@ -17,12 +17,22 @@ const Login = () => {
         "https://nazorat-ishi-default-rtdb.firebaseio.com/users.json"
       );
 
-      const users = Object.values(data);
-      const userExists = users.find(
-        (user) => user.username === username && user.password === password
-      );
+      let odam = false;
+      let users = [];
 
-      if (userExists) {
+      const kalit = [...data]; 
+
+      kalit.forEach((user) => {
+        users.push(user);
+      });
+
+      users.forEach((user) => {
+        if (user.username === username && user.password === password) {
+          odam = true;
+        }
+      });
+
+      if (odam) {
         dispatch(login());
         navigate("/private");
       } else {
@@ -36,17 +46,8 @@ const Login = () => {
   return (
     <Container maxWidth="xs">
       <Typography variant="h4">Login</Typography>
-      <TextField
-        label="Username"
-        fullWidth
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <TextField
-        label="Password"
-        type="password"
-        fullWidth
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <TextField label="Username" fullWidth onChange={(e) => setUsername(e.target.value)} />
+      <TextField label="Password" type="password" fullWidth onChange={(e) => setPassword(e.target.value)} />
       <Button variant="contained" fullWidth onClick={handleLogin}>
         Login
       </Button>
