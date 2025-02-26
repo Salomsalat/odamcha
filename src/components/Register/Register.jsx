@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Register = () => {
-  const [user, setUser] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ const Register = () => {
     try {
       await axios.post(
         "https://nazorat-ishi-default-rtdb.firebaseio.com/users.json",
-        { user, password }
+        { username, password }
       );
       navigate("/");
     } catch (error) {
@@ -28,7 +28,7 @@ const Register = () => {
       <TextField
         label="user"
         fullWidth
-        onChange={(e) => setUser(e.target.value)}
+        onChange={(e) => setUsername(e.target.value)}
       />
       <TextField
         fullWidth
